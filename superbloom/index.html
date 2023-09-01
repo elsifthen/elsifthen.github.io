@@ -75,18 +75,27 @@ a {
 
 <div class="info">
   <a href="https://feralfile.com/exhibitions/n-12-2ts" target="_blank">N=12</a> | 
-  <a href="https://feralfile.com/series/superbloom-1mm" target="_blank">Superbloom</a> | 
+  <a href="https://opensea.io/collection/n-12-1?search[stringTraits][0][name]=Artist&search[stringTraits][0][values][0]=Elsif" target="_blank">Superbloom</a> | 
   <a href="https://twitter.com/ElsifThen" target=_blank>Elsif</a>
 </div>
 
 <script>
   let scroll = document.getElementById('scroll');
   let html = ''
-  for (let i = 0; i < 144; i++) {
+  const urlParams = new URLSearchParams(window.location.search);
+  let start = parseInt(urlParams.get('set'));
+  let play = true;
+  if (urlParams.get('play') == 'false') {
+    scroll.style.animation = 'none';
+  }
+  let i = 0;
+  if (!isNaN(start)) {
+    i = start - 1;
+  }
+  for (; i < 144; i++) {
     html += '<img src="thumbs/'+ i + '.jpg" title="Iteration #'+ (i+1) +'" loading="lazy" />';
   }
   scroll.innerHTML = html;
 </script>
-
 </body>
 </html>
